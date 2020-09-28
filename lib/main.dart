@@ -10,7 +10,6 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'WhatsApp',
       theme: ThemeData(
-        fontFamily: 'Vazir',
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -20,8 +19,7 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primaryColor: new Color(0xff075E54),
-        accentColor:  new Color(0xff25d366)
+        primaryColor: new Color(0xff075e54)
       ),
       debugShowCheckedModeBanner: false,
       home: new Directionality(textDirection: TextDirection.rtl, child: WhatsAppHome())
