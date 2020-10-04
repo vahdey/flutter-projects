@@ -45,7 +45,33 @@ class WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderSta
           new Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5)
           ),
-          new Icon(Icons.more_vert)
+          new PopupMenuButton<String>(
+              onSelected: (String choice) {
+
+              } ,
+              itemBuilder: (BuildContext context) {
+                return [
+                  new PopupMenuItem(
+                    value: 'new_group',
+                    child:  new Row(
+                      mainAxisAlignment:  MainAxisAlignment.end,
+                      children: <Widget>[
+                        new Text('گروه جدید')
+                      ],
+                    )
+                  ),
+                  new PopupMenuItem(
+                      value: 'settings',
+                      child: new Row(
+                        mainAxisAlignment:  MainAxisAlignment.end,
+                        children: <Widget>[
+                          new Text('تنظیمات')
+                        ],
+                      )
+                  )
+                ];
+              }
+          )
         ],
       ),
       body: new TabBarView(
@@ -56,6 +82,11 @@ class WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderSta
             new StatusScreen(),
             new CallScreen()
           ]
+      ),
+      floatingActionButton: new FloatingActionButton(
+        backgroundColor: Theme.of(context).accentColor,
+        child: new Icon(Icons.message , color: Colors.white),
+        onPressed: () { print('open chat'); }
       ),
     );
   }
