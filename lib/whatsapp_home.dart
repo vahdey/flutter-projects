@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/pages/call_screen.dart';
 import 'package:whatsapp/pages/camera_screen.dart';
 import 'package:whatsapp/pages/chat_screen.dart';
+import 'package:whatsapp/pages/setting_screen.dart';
 import 'package:whatsapp/pages/status_screen.dart';
+import 'package:whatsapp/pages/create_chat_screen.dart';
+
 
 class WhatsAppHome extends StatefulWidget {
   @override
@@ -13,7 +16,7 @@ class WhatsAppHome extends StatefulWidget {
 class WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderStateMixin {
   TabController tabController;
   Map<String , SliverAppBar> appBarList;
-  String _currentAppBar  = 'searchAppBar';
+  String _currentAppBar  = 'mainAppBar';
 
   @override
   void initState() {
@@ -51,7 +54,11 @@ class WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderSta
         ),
         new PopupMenuButton<String>(
             onSelected: (String choice) {
-
+              if(choice == 'settings') {
+                Navigator.pushNamed(context, "/settings");
+              } else if(choice == 'new_group') {
+                // Navigator push to new Group
+              }
             } ,
             itemBuilder: (BuildContext context) {
               return [
@@ -136,7 +143,9 @@ class WhatsAppHomeState extends State<WhatsAppHome> with SingleTickerProviderSta
       floatingActionButton: new FloatingActionButton(
         backgroundColor: Theme.of(context).accentColor,
         child: new Icon(Icons.message , color: Colors.white),
-        onPressed: () { print('open chat'); }
+        onPressed: () {
+          Navigator.pushNamed(context, "/new_chat");
+        }
       ),
     );
   }
